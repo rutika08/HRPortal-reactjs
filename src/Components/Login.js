@@ -21,7 +21,7 @@ export const Login = () => {
                 password: password
             }
         
-        await axios.post('http://localhost:2000/login', data).then((res) => {
+        await axios.post('http://localhost:3300/login', data).then((res) => {
 
 
             if (res.data.status == 200 ) {

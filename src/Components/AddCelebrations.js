@@ -3,26 +3,28 @@ import axios from 'axios'
 import { useState } from 'react'
 
 export const AddCelebrations = () => {
-  const [title, settitle] = useState('')
+  const [celebrationName, setcelebrationName] = useState('')
   const [description, setdescription] = useState('')
-  const [date, setdate] = useState('')
-  const [time, settime] = useState('')
-  const [venue, setvenue] = useState('')
- 
-
+  const [celebrationDate, setcelebrationDate] = useState('')
+  const [celeStartTime, setceleStartTime] = useState('')
+  const [celeEndTime, setceleEndTime] = useState('')
+  const [celeVenue, setceleVenue] = useState('')
 
   const submit =(e)=>{
-    e.preventDefault()
+    e.preventDefault();
     console.log("ii",e.target.value)
+
+    alert("Successfully Enter...")
   
     var data = {
-      title:title,
+      celebrationName: celebrationName,
+      celebrationDate: celebrationDate,
+      celeStartTime: celeStartTime,
+      celeEndTime: celeEndTime,
       description:description,
-      date:date,
-      time:time,
-      venue:venue,        
+      celeVenue: celeVenue
     }
-    axios.post('http://localhost:2000/celebration',data).then(res=>{
+    axios.post('http://localhost:3300/celebration',data).then(res=>{
         console.log(res.data)
     })
 }
@@ -39,9 +41,9 @@ return (
       </p>
       <form className="forms-sample" onSubmit={submit}>
         <div className="form-group row">
-          <label htmlFor="exampleInputUsername2" name="title" className="col-sm-2 col-form-label">Title</label>
+          <label htmlFor="exampleInputUsername2" name="celebrationName" className="col-sm-2 col-form-label">Title</label>
           <div className="col-sm-9">
-            <input type="text" className="form-control" name="title" onChange={(e)=>settitle(e.target.value)} />
+            <input type="text" className="form-control" name="celebrationName" onChange={(e)=>setcelebrationName(e.target.value)} />
           </div>
         </div>
         <div className="form-group row">
@@ -51,21 +53,27 @@ return (
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="exampleInputMobile" name="date" className="col-sm-2 col-form-label">Date</label>
+          <label htmlFor="exampleInputMobile" name="celebrationDate" className="col-sm-2 col-form-label">Date</label>
           <div className="col-sm-9">
-            <input type="date" className="form-control" name="date" onChange={(e)=>setdate(e.target.value)} placeholder="dd/mm/yy" />
+            <input type="date" className="form-control" name="celebrationDate" onChange={(e)=>setcelebrationDate(e.target.value)} placeholder="dd/mm/yy" />
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="exampleInputPassword2" name="time" className="col-sm-2 col-form-label">Time</label>
+          <label htmlFor="exampleInputPassword2" name="celeStartTime" className="col-sm-2 col-form-label">Time</label>
           <div className="col-sm-9">
-            <input type="time" className="form-control" name="time" onChange={(e)=>settime(e.target.value)} placeholder="12:12:pm" />
+            <input type="time" className="form-control" name="celeStartTime" onChange={(e)=>setceleStartTime(e.target.value)} placeholder="12:12:pm" />
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="exampleInputConfirmPassword2" name="venue" className="col-sm-2 col-form-label">Venue</label>
+          <label htmlFor="exampleInputPassword2" name="celeEndTime" className="col-sm-2 col-form-label">Time</label>
           <div className="col-sm-9">
-            <input type="text" className="form-control" name="venue" onChange={(e)=>setvenue(e.target.value)} />
+            <input type="time" className="form-control" name="celeEndTime" onChange={(e)=>setceleEndTime(e.target.value)} placeholder="12:12:pm" />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label htmlFor="exampleInputConfirmPassword2" name="celeVenue" className="col-sm-2 col-form-label">Venue</label>
+          <div className="col-sm-9">
+            <input type="text" className="form-control" name="celeVenue" onChange={(e)=>setceleVenue(e.target.value)} />
           </div>
         </div>
         <button type="submit" className="button2">Submit</button>

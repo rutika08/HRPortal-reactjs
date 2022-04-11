@@ -3,25 +3,17 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
-export const CelebrationDetail = () => {
-  const [celebrationList, setcelebrationList] = useState([])
+export const HolidayDetails = () => {
+  const [holidayList, setholidayList] = useState([])
     
 
   const getData = () => {
-      axios.get("http://localhost:3300/celebration").then(res => {
+      axios.get("http://localhost:3300/holiday").then(res => {
           console.log(res.data.data)
-          setcelebrationList(res.data.data)
-      });
+          setholidayList(res.data.data)
+      })
 
-  };
-
-  const DeleteData =(_id)=>{
-    axios.delete(`http://localhost:3300/celebration/${_id}`).then((res)=>{
-        alert(res.data);
-        getData();
-    });
-  };
-
+  }
   useEffect(() => {
       getData()
   }, [])
@@ -32,7 +24,7 @@ export const CelebrationDetail = () => {
     <div className="col-lg-12 grid-margin stretch-card">
   <div className="card">
     <div className="card-body">
-      <h4 className="card-title"> Celebration Details</h4>
+      <h4 className="card-title"> Holiday Details</h4>
       <p className="card-description">
         {/* Add class <code>.table-striped</code> */}
       </p>
@@ -50,47 +42,35 @@ export const CelebrationDetail = () => {
                 Description
               </th>
               <th>
-                Date
+                Start Date
               </th>
               <th>
-                Start Time
-              </th>
-              <th>
-                End Time
-              </th>
-              <th>
-               Venue
+                End Date
               </th>
             </tr>
           </thead>
           <tbody>
-          {celebrationList.map((celebration,index)=>{
+          {holidayList.map((holiday,index)=>{
                         return(
                           <tr class="table-info">
                           <td scope="row">{index+1}
                           </td>
                           <td>
-                            {celebration.celebrationName}
+                            {holiday.holidayName}
                           </td>
                           <td>
-                          {celebration.description}  
+                          {holiday.description}  
                           </td>
                           <td>
-                          {celebration.celebrationDate}
+                          {holiday.holidayStartDate}
                           </td>
                           <td>
-                          {celebration.celeStartTime}
+                          {holiday.holidayEndDate}
                           </td>
                           <td>
-                          {celebration.celeEndTime}
-                          </td>
-                          <td>
-                          {celebration.celeVenue}
-                          </td>
-                          <td>
-                            <button onClick={() => DeleteData(celebration._id)} className='btn btn-danger'>DELETE</button>
-                            <Link  to={`/update/${celebration._id}`} className  = "btn btn-primary">UPDATE</Link>
-                          </td>
+                                        <Link  to={`/delete/${celebration._id}`} className = "btn btn-danger">DELETE</Link>
+                                        <Link  to={`/update/${celebration._id}`} className  = "btn btn-primary">UPDATE</Link>
+                                    </td>
                         </tr>
 
                         )

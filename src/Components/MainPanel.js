@@ -8,7 +8,7 @@ export const MainPanel = () => {
         <div className="col-md-12 grid-margin">
           <div className="row">
             <div className="col-12 col-xl-8 mb-4 mb-xl-0">
-              <h3 className="font-weight-bold">Welcome Aamir</h3>
+              <h3 className="font-weight-bold">Welcome</h3>
               <h6 className="font-weight-normal mb-0">All systems are running smoothly! You have <span className="text-primary">3 unread alerts!</span></h6>
             </div>
             <div className="col-12 col-xl-4">
@@ -40,7 +40,7 @@ export const MainPanel = () => {
                     <h2 className="mb-0 font-weight-normal"><i className="icon-sun mr-2" />31<sup>C</sup></h2>
                   </div>
                   <div className="ml-2">
-                    <h4 className="location font-weight-normal">Bangalore</h4>
+                    <h4 className="location font-weight-normal">Ahmedabad</h4>
                     <h6 className="font-weight-normal">India</h6>
                   </div>
                 </div>
@@ -53,8 +53,8 @@ export const MainPanel = () => {
             <div className="col-md-6 mb-4 stretch-card transparent">
               <div className="card card-tale">
                 <div className="card-body">
-                  <p className="mb-4">Today’s Bookings</p>
-                  <p className="fs-30 mb-2">4006</p>
+                  <p className="mb-4">Today’s Update</p>
+                  <p className="fs-30 mb-2">40</p>
                   <p>10.00% (30 days)</p>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export const MainPanel = () => {
             <div className="col-md-6 mb-4 stretch-card transparent">
               <div className="card card-dark-blue">
                 <div className="card-body">
-                  <p className="mb-4">Total Bookings</p>
+                  <p className="mb-4">Total Update</p>
                   <p className="fs-30 mb-2">61344</p>
                   <p>22.00% (30 days)</p>
                 </div>

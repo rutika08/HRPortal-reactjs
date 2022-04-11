@@ -3,20 +3,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
-export const CelebrationDetail = () => {
-  const [celebrationList, setcelebrationList] = useState([])
+export const LeaveDetails = () => {
+  const [leaveList, setleaveList] = useState([])
     
 
   const getData = () => {
-      axios.get("http://localhost:3300/celebration").then(res => {
+      axios.get("http://localhost:3300/leave").then(res => {
           console.log(res.data.data)
-          setcelebrationList(res.data.data)
+          setleaveList(res.data.data)
       });
-
   };
 
   const DeleteData =(_id)=>{
-    axios.delete(`http://localhost:3300/celebration/${_id}`).then((res)=>{
+    axios.delete(`http://localhost:3300/leave/${_id}`).then((res)=>{
         alert(res.data);
         getData();
     });
@@ -32,7 +31,7 @@ export const CelebrationDetail = () => {
     <div className="col-lg-12 grid-margin stretch-card">
   <div className="card">
     <div className="card-body">
-      <h4 className="card-title"> Celebration Details</h4>
+      <h4 className="card-title"> Leave Details</h4>
       <p className="card-description">
         {/* Add class <code>.table-striped</code> */}
       </p>
@@ -44,52 +43,34 @@ export const CelebrationDetail = () => {
                 #
               </th>
               <th>
-                Title
+                Leave Reason
               </th>
               <th>
-                Description
+                Start Date
               </th>
               <th>
-                Date
-              </th>
-              <th>
-                Start Time
-              </th>
-              <th>
-                End Time
-              </th>
-              <th>
-               Venue
+                End Date
               </th>
             </tr>
           </thead>
           <tbody>
-          {celebrationList.map((celebration,index)=>{
+          {leaveList.map((leave,index)=>{
                         return(
                           <tr class="table-info">
                           <td scope="row">{index+1}
                           </td>
                           <td>
-                            {celebration.celebrationName}
+                          {leave.leaveReason}  
                           </td>
                           <td>
-                          {celebration.description}  
+                          {leave.leaveStartDate}
                           </td>
                           <td>
-                          {celebration.celebrationDate}
-                          </td>
-                          <td>
-                          {celebration.celeStartTime}
-                          </td>
-                          <td>
-                          {celebration.celeEndTime}
-                          </td>
-                          <td>
-                          {celebration.celeVenue}
+                          {leave.leaveEndDate}
                           </td>
                           <td>
                             <button onClick={() => DeleteData(celebration._id)} className='btn btn-danger'>DELETE</button>
-                            <Link  to={`/update/${celebration._id}`} className  = "btn btn-primary">UPDATE</Link>
+                            <Link  to={`/update/${leave._id}`} className  = "btn btn-primary">UPDATE</Link>
                           </td>
                         </tr>
 

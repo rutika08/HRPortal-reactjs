@@ -11,6 +11,7 @@ import { MainPanel } from './MainPanel'
 import { Setting } from './Setting'
 import { Sidebar } from './Sidebar'
 import { SignUp } from './SignUp'
+import { UpdateUser } from './UpdateUser'
 import { UserDetail } from './UserDetail'
 
 
@@ -36,7 +37,7 @@ export const Main = () => {
   <Logout/>
 
 
- <Routes>
+  <Routes>
    
      <Route path='/' element={<MainPanel/>}/>
      <Route path='/adduser' element={<AddUser/>}/>
@@ -46,7 +47,8 @@ export const Main = () => {
      <Route path='/login' element={<Login/>}/>
      <Route path='/signup' element={<SignUp/>}/>
      <Route path='/logout' element={<Logout/>}/>
-     </Routes>
+     <Route path="/users/updateuser/:id" element={<UpdateUser/>}/>
+  </Routes>
 </div>
 
   )

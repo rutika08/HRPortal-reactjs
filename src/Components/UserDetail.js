@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-
-
 export const UserDetail = () => {
   const [userList, setuserList] = useState([])
     
 
   const getData = () => {
-      axios.get("http://localhost:2000/users").then(res => {
+      axios.get("http://localhost:3300/users").then(res => {
           console.log(res.data.data)
           setuserList(res.data.data)
       })
 
-  }
+  };
+
+  const DeleteData =(_id)=>{
+    axios.delete(`http://localhost:3300/users/${_id}`).then((res)=>{
+        alert(res.data);
+        getData();
+    });
+};
+
   useEffect(() => {
       getData()
   }, [])
@@ -90,7 +96,7 @@ export const UserDetail = () => {
                           {user.gender}
                           </td>
                           <td>
-                          {user.mobileNo}
+                          {user.userContact}
                           </td>
                           <td>
                           {user.dateOfBirth}
@@ -105,9 +111,9 @@ export const UserDetail = () => {
                           {user.salary}
                           </td>
                           <td>
-                                        <Link  to={`/delete/${user._id}`} className = "btn btn-danger">DELETE</Link>
-                                        <Link  to={`/update/${user._id}`} className  = "btn btn-primary">UPDATE</Link>
-                                    </td>
+                            <button onClick={() => DeleteData(user._id)} className='btn btn-danger'>DELETE</button>
+                            <Link  to={`/users/updateuser/${user._id}`} className  = "btn btn-primary">UPDATE</Link>
+                          </td>
                         </tr>
 
                         )
